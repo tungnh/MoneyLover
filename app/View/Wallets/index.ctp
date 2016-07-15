@@ -14,22 +14,30 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<section class="scrollable padder w-f">
-    <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+    <section class="scrollable padder w-f">
+        <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+            <?php
+                echo '<li>';
+                echo $this->Html->link(
+                        '<i class="fa fa-credit-card"></i><strong> QUẢN LÝ VÍ</strong>',
+                        array(
+                            'controller' => 'wallets',
+                            'action' => 'index'),
+                        array(
+                            'escape' => FALSE));
+                echo '</li>';
+            ?>
+        </ul>
         <?php
-            echo '<li>';
-            echo $this->Html->link(
-                    '<i class="fa fa-credit-card"></i><strong> QUẢN LÝ VÍ</strong>',
+            echo $this->Form->create(
+                    'Search',
                     array(
-                        'controller' => 'wallets',
-                        'action' => 'index'),
-                    array(
-                        'escape' => FALSE));
-            echo '</li>';
+                        'url' => array(
+                            'controller' => 'wallets',
+                            'action' => 'search'),
+                        'class' => 'bs-example form-horizontal',
+                        'method' => 'post'));
         ?>
-    </ul>
-    <form class="bs-example form-horizontal" name="form" method="post" action="index">
-        <input type="hidden" name="direction">
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel panel-default">
@@ -39,13 +47,22 @@
                                 <label class="col-lg-2 control-label" style="padding-right: 0px; text-align: left;">
                                     Từ khóa
                                 </label>
-                                <div class="col-lg-9" style="padding-right: 0px;">
-                                    <input id="keysearch" type="text" class="form-control input-sm" placeholder="Từ khóa" name="keySearch">
-                                </div>
+                                <?php
+                                    echo $this->Form->input(
+                                            'keyword',
+                                            array(
+                                                'label' => FALSE,
+                                                'div' => array(
+                                                    'class' => 'col-lg-9',
+                                                    'style' => 'padding-right: 0px;'),
+                                                'class' => 'form-control input-sm',
+                                                'placeholder' => 'Tên danh mục',
+                                                'value' => $filter));
+                                ?>
                             </div>
                             <div class="col-lg-3">
                                 <div class="text-center">
-                                    <button type="submit" id="btn_search" onclick="search();" class="btn btn-sm btn-s-sm btn-primary">
+                                    <button type="submit" id="btn_search" class="btn btn-sm btn-s-sm btn-primary">
                                         <i class="fa fa-search"></i> Tìm kiếm
                                     </button>
                                 </div>
@@ -55,6 +72,9 @@
                 </section>
             </div>
         </div>
+        <?php
+            echo $this->Form->end();
+        ?>
         <div class="row m-b-sm">
             <div class="col-lg-12">
                 <div class="pull-left">
@@ -87,7 +107,6 @@
                     <tbody>                        
                         <?php
                             if($data == NULL){
-                                echo "<tr><td colspan='5'>Không có dữ liệu</td></tr>";
                             } else{
                                 $i = 1;
                                 foreach($data as $item){
@@ -112,7 +131,7 @@
                         ?>
                     </tbody>
                 </table>
+                <?php echo $this->element('Page/pagination'); ?>
             </div>
         </section>
-    </form>
-</section>
+    </section>

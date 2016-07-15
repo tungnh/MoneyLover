@@ -110,7 +110,6 @@
                     <tbody>                        
                         <?php
                             if($data == NULL){
-                                echo "<tr><td colspan='5'>Không có dữ liệu</td></tr>";
                             } else{
                                 $i = 1;
                                 foreach($data as $item){
@@ -141,30 +140,7 @@
                         ?>
                     </tbody>
                 </table>
-                <footer class="footer bg-white b-t">
-                    <div class="row text-center-xs">
-                        <div class="col-md-4 hidden-sm">
-                            <p class="m-t" style="color: #2e3e4e;">
-                                Tổng số <strong><?php echo sizeof($data);?></strong> dữ liệu
-                            </p>
-                        </div>
-                        <?php
-                            if(sizeof($data) > 0){
-                        ?>
-                        <div class="col-md-8 text-right text-center-xs">
-                            <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
-                                <li><?php echo $this->Paginator->first('<i class="fa fa-step-backward"></i>', array('tag' => 'li', 'escape' => FALSE), null, array('tag' => 'li', 'class' => 'disabled', 'disabledTag' => 'a', 'escape' => FALSE)); ?></li>
-                                <li><?php echo $this->Paginator->prev('<i class="fa fa-backward"></i>', array('tag' => 'li', 'escape' => FALSE), null, array('tag' => 'li', 'class' => 'disabled', 'disabledTag' => 'a', 'escape' => FALSE)); ?></li>
-                                <li><?php echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentTag' => 'a', 'currentClass' => 'active', 'first' => 1)); ?></li>
-                                <li><?php echo $this->Paginator->next('<i class="fa fa-forward"></i>', array('tag' => 'li', 'escape' => FALSE), null, array('tag' => 'li', 'class' => 'disabled', 'disabledTag' => 'a', 'escape' => FALSE)); ?></li>
-                                <li><?php echo $this->Paginator->last('<i class="fa fa-step-forward"></i>', array('tag' => 'li', 'escape' => FALSE), null, array('tag' => 'li', 'class' => 'disabled', 'disabledTag' => 'a', 'escape' => FALSE)); ?></li>
-                            </ul>
-                        </div>
-                        <?php
-                            }
-                        ?>
-                    </div>
-                </footer>
+                <?php echo $this->element('Page/pagination'); ?>
             </div>
         </section>
     </section>

@@ -394,5 +394,5 @@ Configure::write('LIMIT', 10);
 /*
  * Session
  */
-Configure::write('SESSION_FILTER', 'Filter');
-Configure::write('SESSION_WALLET_SELECT', 'WalletSelect');
+Configure::write('SESSION_FILTER', 'SESSION_FILTER');
+Configure::write('SESSION_WALLET_SELECT', 'SESSION_WALLET_SELECT');

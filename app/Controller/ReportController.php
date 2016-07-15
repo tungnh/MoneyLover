@@ -11,8 +11,32 @@ class ReportController extends AppController {
     public $uses = array('Transaction', 'User', 'Wallet', 'Category');
     
     function index(){
+        $json_data = array(
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Ăn uống', 60),
+            array('Xăng xe', 30),
+            array('Mua sắm', 10)
+        );
         $title = 'Báo cáo';
         $this->set(compact('title'));
+        $this->set('json_data', json_encode($json_data));
     }
 }
 

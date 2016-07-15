@@ -20,7 +20,7 @@ class CategorysController extends AppController {
                 'Category.id' => 'desc',
             )
         );
-        $this->Session->write(Configure::read('Session.filter'), '');
+        $this->Session->write(Configure::read('SESSION_FILTER'), '');
         $filter = '';
         $title = 'Danh mục';
         $this->set(compact('title'));
@@ -32,9 +32,9 @@ class CategorysController extends AppController {
         parent::checkExitsWallet();
         $this->Category->recursive = 0;
         if($this->request->is('POST')){
-            $this->Session->write(Configure::read('Session.filter'), $this->request->data['Search']['keyword']);
+            $this->Session->write(Configure::read('SESSION_FILTER'), $this->request->data['Search']['keyword']);
         }
-        $filter = $this->Session->read(Configure::read('Session.filter'));
+        $filter = $this->Session->read(Configure::read('SESSION_FILTER'));
         $this->paginate = array(
             'conditions' => array (
                 'Category.user_id' => $this->Auth->user('id'),
